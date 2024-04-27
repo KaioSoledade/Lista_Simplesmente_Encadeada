@@ -10,7 +10,7 @@ int main(){
     inserir_no_meio(&lista, 20, 30);
     inserir_no_meio(&lista, 10, 30);
 
-    lista_vazia(&lista);
+    lista_vazia(lista);
 
-    imprimir_lista(&lista);
+    imprimir_lista(lista);
 }
