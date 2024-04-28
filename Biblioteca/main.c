@@ -6,9 +6,10 @@ int main(){
 
     lista = inicializa_lista();
 
-    inserir_no_meio(&lista, 30, 10);
-    inserir_no_meio(&lista, 20, 30);
-    inserir_no_meio(&lista, 10, 30);
+    inserir_no_fim(&lista, 30);
+    inserir_no_fim(&lista, 20);
+    inserir_no_fim(&lista, 80);
+
 
     lista_vazia(lista);
 

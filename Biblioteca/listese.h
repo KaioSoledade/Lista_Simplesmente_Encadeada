@@ -1,3 +1,5 @@
+#ifndef LISTASE_H
+#define LISTASE_H
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -24,7 +26,21 @@ int lista_vazia(No *lista){
     }
 }
 
-void inserir_no_meio(No **lista, int num, int ant){
+void inserir_no_inicio(No **lista, int num){
+    No *aux, *novo = malloc(sizeof(No));
+
+
+    if(novo){
+        novo->valor = num;
+        novo->proximo = *lista;
+        *lista = novo;
+    }
+    else{
+        printf("Erro ao alocar memoria!! (Inserir no inicio)\n");
+    }
+}
+
+void inserir_no_meio(No **lista, item num, int ant){
     No *aux, *novo = malloc(sizeof(No));
 
     if(novo){
@@ -46,7 +62,29 @@ void inserir_no_meio(No **lista, int num, int ant){
         printf("Erro ao alocar memoria!! (inserir no  meio)");
     }
 }
+void inserir_no_fim(No **lista, int num){
+    No *aux, *novo = malloc(sizeof(No));
+    if(novo){
+        novo->valor = num;
+        novo->proximo = NULL;
 
+        //Esse é o primeiro?
+        if(*lista == NULL){
+            *lista = novo;
+        }
+        else{
+            aux = *lista;
+            while(aux->proximo){
+                aux = aux->proximo;
+            }
+            aux->proximo = novo;
+        }
+
+    }
+    else{
+        printf("Erro em aloca memoria!! (inserir no fim)");
+    }
+}
 void imprimir_lista(No *no){
     printf("\nLista: ");
     No *atu = no;
@@ -54,19 +92,6 @@ void imprimir_lista(No *no){
         printf("\n%d", atu->valor);
         atu = atu->proximo;
     }
-    printf("\n\nFim da Lista");
+    printf("\nFim da Lista");
 }
-
-
-int main(){
-    No *lista;
-    lista = inicializa_lista();
-
-    inserir_no_meio(&lista, 30, 10);
-    inserir_no_meio(&lista, 20, 30);
-    inserir_no_meio(&lista, 10, 30);
-
-    lista_vazia(lista);
-
-    imprimir_lista(lista);
-}
+#endif
